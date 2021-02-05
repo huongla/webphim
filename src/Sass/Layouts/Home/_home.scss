@@ -47,14 +47,22 @@
         position: absolute;
         top: 43%;
         transform: translateX(-55%);
-        width: 70px;
+        width: 100px;
+        outline: none;
         &:hover {
             opacity: 0.75;
         }
         &:focus {
             outline: none !important;
+            background: none !important ;
         }
+        &:active {
+            outline: none !important;
+            background: none !important ;
+        }
+
     }
+   
 }
 
 //END OF CAROUSEL

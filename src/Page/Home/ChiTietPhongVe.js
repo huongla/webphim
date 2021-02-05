@@ -69,7 +69,7 @@ export default function ChiTietPhongVe(props) {
     };
     const reset = () => {
         setTime({
-            minutes: 3,
+            minutes: 2,
             seconds: 0
         });
         setOver(false);
@@ -83,7 +83,7 @@ export default function ChiTietPhongVe(props) {
     }, [start]);
 
     useEffect(() => {
-       setTime({ minutes: 3, seconds: 0 })
+       setTime({ minutes: 2, seconds: 0 })
     }, []);
 
     const renderCountDown = () => {
