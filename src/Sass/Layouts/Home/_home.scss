@@ -59,8 +59,11 @@
         &:active {
             outline: none !important;
             background: none !important ;
+            border: none !important;
         }
-
+    }
+    .btn-primary{
+        box-shadow: none !important;
     }
    
 }

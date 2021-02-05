@@ -518,6 +518,11 @@ header .header__menu .header__menu-right .header__menu-user .hideMenu {
 .carousel .btnPlayVideo:active {
   outline: none !important;
   background: none !important;
+  border: none !important;
+}
+
+.carousel .btn-primary {
+  box-shadow: none !important;
 }
 
 .dsPhim {
