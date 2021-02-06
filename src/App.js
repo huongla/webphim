@@ -16,11 +16,18 @@ import DangNhap from './Page/User/DangNhap';
 import ThongTinCaNhan from './Page/User/ThongTinCaNhan';
 import Axios from 'axios';
 
+//eltr
+import { AdminTemplate } from './Template/AdminTemplate';
+import Admin from './Page/Admin/Admin';
+import QuanLyNguoiDung from './Page/Admin/User/QuanLyNguoiDung'
+import QuanLyPhim from './Page/Admin/Film/QuanLyPhim'
+import { Temlay } from './Template/Temlay';
+
 
 function App() {
   // const [danhSachPhim, setDanhSachPhim] = useState(null)
   const [loading, setLoading] = useState(false);
-  
+
 
   const fetchData = async () => {
     try {
@@ -29,7 +36,7 @@ function App() {
         .then(result => {
           setLoading(true);
         });
-     
+
     } catch (e) {
       console.log(e);
     }
@@ -52,8 +59,17 @@ function App() {
           <Route exact path='/dangnhap' component={DangNhap} />
           <Route exact path='/thongtincanhan' component={ThongTinCaNhan} />
           <HomeTemplate exact path="/" Component={Home} />
+
+
+          {/* eltr */}
+          <AdminTemplate exact path='/admin' Component={Admin} />
+          <AdminTemplate exact path='/admin/quanlynguoidung' Component={QuanLyNguoiDung} />
+          <AdminTemplate exact path='/admin/quanlyphim' Component={QuanLyPhim} />
+
+
+
         </Switch>
-      } 
+      }
     </>
   );
 }

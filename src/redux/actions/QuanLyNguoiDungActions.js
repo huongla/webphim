@@ -3,6 +3,8 @@ import Swal from 'sweetalert2'
 import { ACCESSTOKEN, USER_LOGIN, DOMAIN, ACCOUNTLOGIN } from '../../Util/Config'
 import { history } from '../../Util/history'
 import { CAP_NHAT_THONG_TIN_CA_NHAN, DANG_NHAP, LICH_SU_DAT_VE } from '../const/QuanLyPhimConst'
+
+
 export const dangNhapApiAction = async (userLogin) => {
     return async (dispatch) => {
         try {
@@ -15,13 +17,28 @@ export const dangNhapApiAction = async (userLogin) => {
             localStorage.setItem(USER_LOGIN, JSON.stringify(result.data));
             localStorage.setItem(ACCESSTOKEN, result.data.accessToken);
             localStorage.setItem(ACCOUNTLOGIN, JSON.stringify(userLogin));
-            Swal.fire('Thông báo', 'Đăng nhập thành công', 'success')
-            history.push('/home')
-            dispatch({
-                type: DANG_NHAP,
-                data: result.data,
-                account: userLogin
-            })
+
+            if (result.data.maLoaiNguoiDung == "QuanTri") {
+                Swal.fire('Thông báo', 'Đăng nhập thành công', 'success')
+                history.push('/admin')
+                dispatch({
+                    type: DANG_NHAP,
+                    data: result.data,
+                    account: userLogin
+                })
+            }
+            else {
+                Swal.fire('Thông báo', 'Đăng nhập thành công', 'success')
+                history.push('/home')
+                dispatch({
+                    type: DANG_NHAP,
+                    data: result.data,
+                    account: userLogin
+                })
+            }
+
+
+
         } catch (err) {
             Swal.fire('Thông báo', err.response.data, 'error')
         }
