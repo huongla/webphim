@@ -22,6 +22,7 @@ import Admin from './Page/Admin/Admin';
 import QuanLyNguoiDung from './Page/Admin/User/QuanLyNguoiDung'
 import QuanLyPhim from './Page/Admin/Film/QuanLyPhim'
 import { Temlay } from './Template/Temlay';
+import { useSelector } from 'react-redux'
 
 
 function App() {
@@ -46,7 +47,11 @@ function App() {
     fetchData()
   }, []);
 
+
+  const { userLogin } = useSelector(state => state.QuanLyNguoiDungReducer)
+
   return (
+
     <>
       {!loading ? <ReactBootStrap.Spinner className="spinner text-danger" animation="border" /> :
         <Switch>
@@ -62,9 +67,14 @@ function App() {
 
 
           {/* eltr */}
-          <AdminTemplate exact path='/admin' Component={Admin} />
-          <AdminTemplate exact path='/admin/quanlynguoidung' Component={QuanLyNguoiDung} />
-          <AdminTemplate exact path='/admin/quanlyphim' Component={QuanLyPhim} />
+
+          {userLogin.maLoaiNguoiDung == "QuanTri" ?
+            <Switch>
+              <AdminTemplate exact path='/admin' Component={Admin} />,
+            <AdminTemplate exact path='/admin/quanlynguoidung' Component={QuanLyNguoiDung} />,
+            <AdminTemplate exact path='/admin/quanlyphim' Component={QuanLyPhim} />
+            </Switch>
+            : 'not'}
 
 
 
